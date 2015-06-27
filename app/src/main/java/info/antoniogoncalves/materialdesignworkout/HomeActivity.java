@@ -13,11 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
 
     private static final String SELECTED_ITEM_ID = "selected";
     private Toolbar mToolbar;
@@ -26,12 +24,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle mDrawerToggle;
     private int mSelectedId;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Toolbar setup ----------------------------------------------------------------------------
+
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
+        //Drawer Layout ----------------------------------------------------------------------------
+
         mDrawer = (NavigationView) findViewById(R.id.navigationView);
         mDrawer.setNavigationItemSelectedListener(this);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -42,8 +47,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mSelectedId = savedInstanceState == null ? R.id.workout1 : savedInstanceState.getInt(SELECTED_ITEM_ID);
         navigate(mSelectedId);
 
-        //FAB button
-
+        //FAB button--------------------------------------------------------------------------------
 
         final FloatingActionButton workout = (FloatingActionButton) findViewById(R.id.Workout);
         workout.setOnClickListener(new OnClickListener() {
@@ -70,22 +74,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = null;
         if(mSelectedId == R.id.workout3){
             mDrawerLayout.closeDrawer(GravityCompat.START);
-            intent = new Intent(this, SecondActivity.class);
+            intent = new Intent(this, Exercises.class);
             startActivity(intent);
         }
         if(mSelectedId == R.id.workout2){
             mDrawerLayout.closeDrawer(GravityCompat.START);
-            intent = new Intent(this, SecondActivity.class);
+            intent = new Intent(this, Exercises.class);
             startActivity(intent);
         }
         if(mSelectedId == R.id.Exercise){
             mDrawerLayout.closeDrawer(GravityCompat.START);
-            intent = new Intent(this, SecondActivity.class);
+            intent = new Intent(this, Exercises.class);
             startActivity(intent);
         }
         if(mSelectedId == R.id.Workout){
             mDrawerLayout.closeDrawer(GravityCompat.START);
-            intent = new Intent(this, SecondActivity.class);
+            intent = new Intent(this, Exercises.class);
             startActivity(intent);
         }
 
