@@ -6,5 +6,6 @@
     <string name="Open">Open</string>
     <string name="Close">Close</string>
     <string name="title_exercise">Exercises</string>
+    <string name="title_activity_workouts">Workouts</string>
 
 </resources>

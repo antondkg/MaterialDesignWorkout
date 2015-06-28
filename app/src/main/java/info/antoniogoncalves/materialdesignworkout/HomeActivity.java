@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -49,11 +50,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //FAB button--------------------------------------------------------------------------------
 
+        final FloatingActionsMenu menuCollapse = (FloatingActionsMenu) findViewById(R.id.action_button);
+
+
         final FloatingActionButton workout = (FloatingActionButton) findViewById(R.id.Workout);
         workout.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                workout.setTitle("New Workout!");
+                menuCollapse.collapse();
                 navigate(R.id.Workout);
             }
         });
@@ -61,11 +65,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         exercise.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                exercise.setTitle("New Exercise!");
+                menuCollapse.collapse();
                 navigate(R.id.Exercise);
             }
         });
-
 
         // Test that FAMs containing FABs with visibility GONE do not cause crashes
     }
@@ -89,7 +92,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         if(mSelectedId == R.id.Workout){
             mDrawerLayout.closeDrawer(GravityCompat.START);
-            intent = new Intent(this, Exercises.class);
+            intent = new Intent(this, Workouts.class);
             startActivity(intent);
         }
 

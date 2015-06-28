@@ -5,15 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class Exercises extends AppCompatActivity{
 
     private Toolbar mToolbar;
+    int sets;
+    int reps;
+    int weight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.second_activity);
+        setContentView(R.layout.exercises);
+        sets = 0;
+        reps = 0;
 
         //Toolbar setup ----------------------------------------------------------------------------
 
@@ -40,7 +47,69 @@ public class Exercises extends AppCompatActivity{
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.submit){
+            finish();
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    // Display functions ---------------------------------------------------------------------------
+
+    public void displaySets(int sets){
+        TextView setsView = (TextView) findViewById(R.id.number_of_sets);
+        setsView.setText(String.valueOf(sets));
+    }
+
+    public void displayReps(int reps){
+        TextView setsView = (TextView) findViewById(R.id.number_of_reps);
+        setsView.setText(String.valueOf(reps));
+    }
+
+    public void displayWeight(int weight){
+        TextView setsView = (TextView) findViewById(R.id.weight);
+        setsView.setText(String.valueOf(weight));
+    }
+
+    // change values -------------------------------------------------------------------------------
+
+    public void addSets(View view){
+        sets++;
+        displaySets(sets);
+    }
+    public void subtractSets(View view){
+        if (sets > 0){
+            sets--;
+            displaySets(sets);
+        }
+        else {
+            displaySets(sets);
+        }
+    }
+    public void addReps(View view){
+        reps++;
+        displayReps(reps);
+    }
+    public void subtractReps(View view){
+        if (reps > 0){
+            reps--;
+            displayReps(reps);
+        }
+        else {
+            displayReps(reps);
+        }
+    }
+    public void addWeight(View view){
+        weight = weight + 5;
+        displayWeight(weight);
+    }
+    public void subtractWeight(View view){
+        if (weight > 0){
+            weight = weight - 5;
+            displayWeight(weight);
+        }
+        else {
+            displayWeight(weight);
+        }
     }
 }
